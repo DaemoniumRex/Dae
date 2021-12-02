@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:getglam/ui/app.dart';
 
-import'home.dart';
-//import 'login.dart'
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getglam/controller/controllerauth.dart';
 
-void main () => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      //theme: ThemeData.dark(),
-      home: HomeScreen(),
-    );
-  }
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  Get.put(Controllerauth());
+  runApp(const MyApp());
 }
-
